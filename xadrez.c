@@ -4,29 +4,85 @@
 // Este código inicial serve como base para o desenvolvimento do sistema de movimentação das peças de xadrez.
 // O objetivo é utilizar estruturas de repetição e funções para determinar os limites de movimentação dentro do jogo.
 
-int main() {
-    // Nível Novato - Movimentação das Peças
-    // Sugestão: Declare variáveis constantes para representar o número de casas que cada peça pode se mover.
+// para alterar a quantidade de movimentos é só mudar os valores das variaveis "qtdmov..." na main
 
-    // Implementação de Movimentação do Bispo
-    // Sugestão: Utilize uma estrutura de repetição para simular a movimentação do Bispo em diagonal.
+//função da torre
+void movertorre(int casas){
+    if (casas==0) return;
+     printf("Direita\n");
+     movertorre(casas - 1);   
+}
 
-    // Implementação de Movimentação da Torre
-    // Sugestão: Utilize uma estrutura de repetição para simular a movimentação da Torre para a direita.
 
-    // Implementação de Movimentação da Rainha
-    // Sugestão: Utilize uma estrutura de repetição para simular a movimentação da Rainha para a esquerda.
+//função da rainha
+void moverrainha (int casas){
+    if (casas==0) return;
+     printf("Esquerda\n");
+     moverrainha(casas - 1);   
 
-    // Nível Aventureiro - Movimentação do Cavalo
-    // Sugestão: Utilize loops aninhados para simular a movimentação do Cavalo em L.
-    // Um loop pode representar a movimentação horizontal e outro vertical.
+}
+// para torre e rainha funções recurssivas.
 
-    // Nível Mestre - Funções Recursivas e Loops Aninhados
-    // Sugestão: Substitua as movimentações das peças por funções recursivas.
-    // Exemplo: Crie uma função recursiva para o movimento do Bispo.
+//função do bispo
+void moverbispo(int casas){
+    if (casas == 0) return;
+    
 
-    // Sugestão: Implemente a movimentação do Cavalo utilizando loops com variáveis múltiplas e condições avançadas.
-    // Inclua o uso de continue e break dentro dos loops.
+    for (int i = 0; i < 1; i++) { 
+        for (int j = 0; j < 1; j++) {
+            printf("Cima, Direita\n");
+        }
+    }
+    
+    moverbispo(casas - 1);
 
+}
+//para o bispo, loop aninhado além da recurssão.
+
+//função do cavalo
+void movercavalo(int movimentos){
+    int movCima = 2;
+    int movDireita = 1;
+
+
+    for (int i = 0; i < movimentos; i++) {
+        for (int cima = 0; cima < movCima; cima++) {
+            printf("Cima\n");
+            if (cima == 1 && movDireita == 1) {
+                for (int dir = 0; dir < movDireita; dir++) {
+                    if (dir == 0) {
+                        printf("Direita\n");
+                        break;
+                    }
+                }
+            }
+        }
+    }
+}
+//para o cavalo, loops aninhados e continue/break
+
+
+int main(){
+//variaveis de quantidade de movimento por peça    
+    int qtdmovtorre = 4;
+    int qtdmovrainha = 4;
+    int qtdmovebispo = 4;
+    int qtdmovecavalo = 1;
+
+//chamando as funções e organizando a saida
+    printf("***Movimento Torre***\n");
+    movertorre(qtdmovtorre);
+
+    printf("***Movimento Rainha***\n");
+    moverrainha(qtdmovrainha);
+
+    printf("***Movimento Bispo***\n");
+    moverbispo(qtdmovebispo);
+
+    printf("***Movimento Cavalo***\n");
+    movercavalo(qtdmovecavalo);
+
+
+    
     return 0;
 }
